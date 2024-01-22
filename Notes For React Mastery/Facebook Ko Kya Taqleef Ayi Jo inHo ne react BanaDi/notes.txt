@@ -1,0 +1,21 @@
+React ko banane ka mukhya uddeshya Facebook mein UI development process ko behtar banane ka tha. React ka development unke internal needs aur challenges ko address karne ke liye kiya gaya tha. Kuch mukhya taqleefen jo React ke development mein madad karti hain, vo hai:
+
+1. **Large-Scale Applications:**
+   Facebook jaise bade social networking sites mein UI kaafi complex hota hai. Traditional UI libraries se large-scale applications ko manage karna mushkil ho jata hai. React ne is taqleef ka samna karke ek component-based architecture provide kiya, jisse large-scale applications ko modular banaya ja sakta hai.
+
+2. **Dynamic User Interfaces:**
+   Facebook ke platform par user interface ki demand hamesha badhti rehti hai. Real-time updates, dynamic content, aur seamless interactions ke liye React ka use karna ek effective tareeka tha. React ke through, components ko efficiently update karke dynamic user interfaces bana sakte hain.
+
+3. **Efficient Updates:**
+   Traditional DOM manipulation techniques se performance issues aati hain, especially jab large datasets ko update karna hota hai. React ne Virtual DOM ka concept introduce kiya, jo DOM manipulation ko optimize karta hai aur sirf changed parts ko update karta hai, jisse overall performance me improvement hoti hai.
+
+4. **Reusability:**
+   Facebook ke bahut se features ko alag-alag parts mein reuse karna jaruri tha. React ke component-based approach ne isko asaan banaya, aur developers ko allow kiya ki woh components ko reuse karke code ko maintain karein.
+
+5. **Developer Productivity:**
+   React ka use karke code likhna aur maintain karna developers ke liye asaan ho gaya. Declarative syntax, reusability, aur modular approach se development process me efficiency aayi.
+
+6. **React Native - Mobile Development:**
+   Facebook ne React Native bhi develop kiya, jo ki React par based hai. Isse developers ko ek hi codebase se cross-platform mobile apps develop karne ki suvidha milti hai, jisse development time aur effort kam hota hai.
+
+In taqleefon ko address karne ke liye, Facebook ne React ko open-source banaya taki dusre developers bhi iska fayda utha sakein, aur iske istemal se better UI development practices ko adopt kar sakein.

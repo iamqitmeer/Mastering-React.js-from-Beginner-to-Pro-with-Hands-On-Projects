@@ -1,0 +1,7 @@
+React me hooks isliye aaye kyunki vo functional components ko stateful banane aur lifecycle methods ka istemal karne ka tareeka provide karte hain, jo ki pehle class components ke liye reserved the. Hooks React v16.8 me introduce kiye gaye the.
+
+Pehle, class components hi stateful components hote the, lekin functional components chhote hote hain aur unme state ya lifecycle methods ka use nahi hota tha. Hooks ne is limitation ko door kar diya aur functional components ko bhi stateful aur dynamic bana diya.
+
+Hooks, functional components me state, lifecycle methods, context, refs, aur bahut kuch manage karne ka ek naya tareeka hai. Kuch popular hooks hain jaise ki useState, useEffect, useContext, useRef, useCallback, useMemo, aur useReducer, jo developers ko component ko manage karne aur organize karne me madad karte hain.
+
+Iske alawa, hooks code ko reusability aur readability mein bhi improve karte hain, kyun ki aap ek hi component me multiple hooks ka use kar sakte hain, jisse code ko modular banaya ja sakta hai. Hooks aapko class components ke verbose syntax se bachate hain aur functional programming paradigms ko encourage karte hain.
