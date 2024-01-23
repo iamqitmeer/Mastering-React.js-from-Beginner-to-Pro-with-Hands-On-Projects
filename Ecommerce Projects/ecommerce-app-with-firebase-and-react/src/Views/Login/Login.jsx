@@ -1,5 +1,6 @@
 import react from 'react'
-import background from './assets/bg.jpg'
+import background from '../../assets/bg.jpg'
+import { Link } from 'react-router-dom';
 
 function Login() {
 
@@ -48,7 +49,9 @@ function Login() {
           >
             Log In
           </button>
-          <p className='text-center text-sml text-left text-blue-900 m-2'>Don't Have an Account <span className='cursor-pointer font-bold text-blue-600'>Sign Up.</span></p>
+          <p className='text-center text-sml text-left text-blue-900 m-2'>Don't Have an Account <Link 
+          to="/register"
+          className='cursor-pointer font-bold text-blue-600'>Sign Up.</Link></p>
         </form>
       </div>
     </div>
