@@ -14,9 +14,9 @@ const Navbar = () => {
     <nav className="bg-gray-900 text-white p-4">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
-        <span className="text-3xl font-bold">
+        <Link to="/" className="text-3xl font-bold">
           <img src={stumbleupon} alt="Logo" className="h-10 w-10 cursor-pointer" />
-        </span>
+        </Link>
 
         {/* Nav Links */}
         <ul className="flex space-x-4">

@@ -1,8 +1,16 @@
-import react from 'react'
+import react, { useState } from 'react'
 import background from '../../assets/bg.jpg'
 import { Link } from 'react-router-dom';
+import { signIn } from '../../Config/Firebase/firebase';
 
 function Login() {
+
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+
+  const logInHua = () => {
+    signIn({ email, password })
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center relative">
@@ -21,6 +29,7 @@ function Login() {
                 Email address
               </label>
               <input
+                onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 id="email"
                 name="email"
@@ -34,6 +43,7 @@ function Login() {
                 Password
               </label>
               <input
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 id="password"
                 name="password"
@@ -44,14 +54,15 @@ function Login() {
             </div>
           </div>
           <button
-            type="submit"
+            type="button"
+            onClick={logInHua}
             className="mt-6 w-full bg-gradient-to-r from-blue-500 to-blue-900 p-3 rounded-md text-white font-semibold"
           >
             Log In
           </button>
-          <p className='text-center text-sml text-left text-blue-900 m-2'>Don't Have an Account <Link 
-          to="/register"
-          className='cursor-pointer font-bold text-blue-600'>Sign Up.</Link></p>
+          <p className='text-center text-sml text-left text-blue-900 m-2'>Don't Have an Account <Link
+            to="/register"
+            className='cursor-pointer font-bold text-blue-600'>Sign Up.</Link></p>
         </form>
       </div>
     </div>

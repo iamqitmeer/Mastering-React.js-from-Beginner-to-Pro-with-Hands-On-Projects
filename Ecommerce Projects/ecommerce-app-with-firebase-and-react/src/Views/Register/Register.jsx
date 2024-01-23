@@ -1,8 +1,20 @@
-import react from 'react'
+import react, { useState } from 'react'
 import background from '../../assets/bg.jpg'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { signUp } from '../../Config/Firebase/firebase';
 
 function Register() {
+  const [firstName, setFirstName] = useState()
+  const [lastName, setLastName] = useState()
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+
+  const navigate = useNavigate()
+
+  const signUpHua = () => {
+    signUp({ firstName, LastName, email, password })
+  }
+
 
   return (
     <div className="min-h-screen flex items-center justify-center relative">
@@ -16,11 +28,12 @@ function Register() {
         <h2 className="text-3xl font-extrabold text-left bg-gradient-to-r from-yellow-100 to-purple-900 text-transparent bg-clip-text">Sign Up</h2>
         <form>
           <div className="space-y-4">
-          <div>
+            <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 First Name
               </label>
               <input
+                onChange={(e) => setFirstName(e.target.value)}
                 type="text"
                 id="FirstName"
                 name="FirstName"
@@ -34,6 +47,7 @@ function Register() {
                 Last Name
               </label>
               <input
+                onChange={(e) => setLastName(e.target.value)}
                 type="text"
                 id="LastName"
                 name="LastName"
@@ -47,6 +61,7 @@ function Register() {
                 Email address
               </label>
               <input
+                onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 id="email"
                 name="email"
@@ -60,6 +75,7 @@ function Register() {
                 Password
               </label>
               <input
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 id="password"
                 name="password"
@@ -70,12 +86,13 @@ function Register() {
             </div>
           </div>
           <button
-            type="submit"
+            type="button"
             className="mt-6 w-full bg-gradient-to-r from-blue-500 to-blue-900 p-3 rounded-md text-white font-semibold"
+            onClick={signUpHua}
           >
             Create your account
           </button>
-          <p className='text-center text-sml text-left text-blue-900 m-2'>Already Have an Account <Link  to="/login" className='cursor-pointer font-bold text-blue-600'>Login.</Link></p>
+          <p className='text-center text-sml text-left text-blue-900 m-2'>Already Have an Account <Link to="/login" className='cursor-pointer font-bold text-blue-600'>Login.</Link></p>
         </form>
       </div>
     </div>
