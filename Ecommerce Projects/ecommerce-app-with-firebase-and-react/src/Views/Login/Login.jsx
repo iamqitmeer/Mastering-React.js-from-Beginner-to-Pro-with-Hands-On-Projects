@@ -1,15 +1,22 @@
 import react, { useState } from 'react'
 import background from '../../assets/bg.jpg'
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { signIn } from '../../Config/Firebase/firebase';
 
 function Login() {
+  const navigate = useNavigate()
 
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
 
-  const logInHua = () => {
-    signIn({ email, password })
+  const logInHua = async () => {
+    try {
+      await signIn({ email, password })
+      navigate('/')
+    }
+    catch (e) {
+      console.log(e)
+    }
   }
 
   return (

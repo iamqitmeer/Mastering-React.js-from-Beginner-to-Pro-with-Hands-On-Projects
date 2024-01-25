@@ -1,8 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { addDoc, collection, getDoc, getDocs, getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
+import { useNavigate } from "react-router-dom";
+
+// const navigate = useNavigate()
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -23,35 +26,41 @@ export const auth = getAuth(app)
 export const storage = getStorage(app)
 export const db = getFirestore(app)
 
-export const signUp = (userInfo) => {
-  const { email, password } = userInfo;
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      // ...
-      alert('User Succesfully Registered')
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
-      alert(error.message)
+export const signUp = async (userInfo) => {
+  try {
+    const { firstName, lastName, email, password } = userInfo;
+    await createUserWithEmailAndPassword(auth, email, password)
+    await addDoc(collection(db, "users"), {
+      firstName, lastName, email,
     });
+    alert('User Succesfully Registered')
+    return (true)
+  } catch (e) {
+    alert(e.message)
+    throw (e)
+  };
 }
 
-export const signIn = (userInfo) => {
-  const { email, password } = userInfo;
-  signInWithEmailAndPassword(auth,email, password)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    // ...
+
+export const signIn = async (userInfo) => {
+  try {
+    const { email, password } = userInfo;
+    await signInWithEmailAndPassword(auth, email, password)
     alert('Logged In')
+    return (true)
+  } catch (e) {
+    alert(e.message)
+    throw (e)
+  }
+}
+
+export const getData = async (userInfo) => {
+  const querySnapshot = await getDocs(collection, (db, 'ads'))
+  const ads = []
+  querySnapshot.forEach((doc) => {
+    const ad = []
+    ad.id = doc.id
+    ads.push(ad)
   })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    alert(error.message)
-  });
+  return ads
 }

@@ -14,15 +14,35 @@
 
 // export default Home
 
-import React from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import Footer from '../../Components/Footer/Footer'
+import Cart from '../../Components/Cart/Cart'
+import { getData } from '../../Config/Firebase/firebase'
+import { useEffect, useState } from 'react'
 
 const Home = () => {
+
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    getProducts()
+  }, [])
+
+  const getProducts = async () => {
+    const ads = await getData()
+    console.log('ads in component', ads)
+    setProducts(ads)
+  }
+
   return (
     <>
-      <Navbar/>
-      <Footer/>
+      <Navbar />
+      <div className='flex flex-wrap p-12'>
+        {products.map(item => {
+          return <Cart/>
+        })}
+      </div>
+      <Footer />
     </>
   )
 }

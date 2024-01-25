@@ -8,11 +8,17 @@ function Register() {
   const [lastName, setLastName] = useState()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
+  const [errorMsg, setErrorMsg] = useState()
 
   const navigate = useNavigate()
 
-  const signUpHua = () => {
-    signUp({ firstName, LastName, email, password })
+  const signUpHua = async () => {
+    try{
+      await signUp({ firstName, lastName, email, password })
+      navigate('/login')
+    } catch (e) {
+      console.log(e)
+    }
   }
 
 
@@ -83,6 +89,9 @@ function Register() {
                 placeholder="********"
                 required
               />
+            </div>
+            <div>
+              <p className='text-red-600 font-bold text-lg'>{errorMsg}</p>
             </div>
           </div>
           <button
