@@ -1,0 +1,23 @@
+JSX, ya JavaScript XML, React library ke sath use hone wala ek syntax hai. React ek JavaScript library hai jo user interfaces (UIs) banane ke liye use hoti hai. JSX, React me UI elements ko describe karne ke liye ek extension hai, jo ki JavaScript ke andar HTML-like syntax provide karta hai.
+
+JSX ka upayog React components banane me hota hai. JSX ki madad se aap UI elements ko tree structure me likh sakte hain, jise React phir interpret karta hai. Iska mukhya uddeshya hai UI code ko likhne ko aasan banana, jisse developers easily UI ko code kar sake.
+
+Example ke liye, yadi aap ek React component banana chahte hain jo ek simple heading ko render karta hai, to JSX ka use is tarah se hoga:
+
+```jsx
+import React from 'react';
+
+const MyComponent = () => {
+  return (
+    <div>
+      <h1>Hello, JSX!</h1>
+    </div>
+  );
+}
+
+export default MyComponent;
+```
+
+Is example me, `<div>` aur `<h1>` HTML tags JSX ke syntax me hain, lekin yeh JavaScript code ke andar hai. Jab React application run hota hai, JSX ko React.createElement() calls me convert kiya jata hai aur isse React elements bante hain.
+
+JSX ka upayog karke, UI ko likhna aasan ho jata hai aur React components banane me madad milti hai.
