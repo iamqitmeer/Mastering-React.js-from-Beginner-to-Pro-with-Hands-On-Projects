@@ -1,0 +1,43 @@
+Remix Icon ka istemal karne ke liye aapko ye steps follow karne honge React.js mein:
+
+1. **Remix Icon Library Install Kare**: Sabse pehle, aapko Remix Icon library ko apne React.js project mein install karna hoga. Aap ise npm ya yarn ke through install kar sakte hain. Yeh command aap terminal mein type karenge:
+
+   ```
+   npm install @remixicons/react
+   ```
+   ya
+   ```
+   yarn add @remixicons/react
+   ```
+
+2. **Icon Import Kare**: Ab, aapko apne component mein un icons ko import karna hoga jinhe aap istemal karna chahte hain. Aap chahe to specific icons ko import kar sakte hain ya sari library ko ek sath bhi import kar sakte hain.
+
+   ```javascript
+   import { IconName } from '@remixicons/react';
+   ```
+
+   Jahan `IconName` ko aap specific icon ke naam se replace karenge, jise aap use karna chahte hain.
+
+3. **Icon Ka Istemal Kare**: Ab aap imported icon component ko apne JSX mein use kar sakte hain.
+
+   ```jsx
+   import { IconName } from '@remixicons/react';
+
+   function App() {
+     return (
+       <div>
+         <IconName />
+       </div>
+     );
+   }
+   ```
+
+4. **Icon Props**: Agar aap kisi icon ko customize karna chahte hain, jaise ki size, color, etc., to aap props ka istemal kar sakte hain.
+
+   ```jsx
+   <IconName size="24" color="#ff0000" />
+   ```
+
+   Yahan `size` prop icon ka size define karta hai aur `color` prop icon ka color define karta hai.
+
+Yeh tareeqa aapko Remix Icon ko apne React.js project mein istemal karne mein madad karega. Agar aap kisi specific icon ko customize karne ke liye janna chahte hain, to Remix Icon ki documentation ko refer karen.
