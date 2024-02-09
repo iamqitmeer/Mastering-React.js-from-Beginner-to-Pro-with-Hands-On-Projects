@@ -1,9 +1,8 @@
 import React from 'react'
 
-const H1 = ({props}) => {
+const H1 = ({ name }) => {
   console.log(name)
 
-  const name = props
 
   return (
     <h1>
