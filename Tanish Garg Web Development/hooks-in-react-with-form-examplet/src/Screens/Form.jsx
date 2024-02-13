@@ -18,7 +18,7 @@ const Form = () => {
 
   return (
     <div className="form-container">
-      <h2>Simple Form</h2>
+      <h2>Register Form</h2>
       <form>
         <div className="form-group">
           <label htmlFor="firstName">Your Name</label>
