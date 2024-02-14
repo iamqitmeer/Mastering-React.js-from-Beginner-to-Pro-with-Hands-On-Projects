@@ -1,0 +1,30 @@
+`useState` ek React hook hai jo functional components mein state management ko sambhalta hai. Pehle, React class components mein hi state ka use hota tha, lekin functional components mein state management ke liye hooks introduce kiye gaye. 
+
+`useState` hook ka upyog state ko maintain karne ke liye hota hai. Jab aap ek functional component banate hain, to aap useState hook ka upyog karke state variables ko declare kar sakte hain aur unhe update karne ke liye functions ko bhi define kar sakte hain.
+
+Yeh hook component ko re-render karne ke liye trigger karta hai jab state ki value change hoti hai. Jaise hi state ki value update hoti hai, component automatically re-render hota hai aur updated state ke sath UI update hoti hai.
+
+Example:
+```jsx
+import React, { useState } from 'react';
+
+function Counter() {
+  // `count` state variable ko declare kiya gaya hai aur uski initial value 0 hai
+  // `setCount` ek function hai jise ham value update karne ke liye use karenge
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      {/* `setCount` function ko use karke `count` state variable ki value ko update karenge */}
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+
+export default Counter;
+```
+
+Is example mein, `useState` hook ka upyog kiya gaya hai ek counter component ke liye jo user ke clicks ko track karta hai. `count` variable state ko maintain karne ke liye use kiya gaya hai aur `setCount` function ko upyog karke uski value update ki jati hai.

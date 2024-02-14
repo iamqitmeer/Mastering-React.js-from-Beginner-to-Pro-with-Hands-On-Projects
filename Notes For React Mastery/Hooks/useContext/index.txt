@@ -1,0 +1,13 @@
+`useContext` hook React mein ek hook hai jo functional components mein context ko access karne ke liye istemal hota hai. Context ek tarah ka global state hota hai jo component tree ke bhar se kisi bhi component tak data ko pass karne ka ek mechanism provide karta hai.
+
+Jab aap `useContext` hook ka istemal karte hain, aap context ke current value ko retrieve kar sakte hain aur phir us value ko apne component mein use kar sakte hain.
+
+`useContext` ka istemal kuch scenarios ke liye hota hai:
+
+1. **Global State Management**: Agar aapko multiple components ke beech mein global state share karna hai, jaise ki user authentication state ya theme settings, to aap context aur `useContext` hook ka istemal kar sakte hain.
+
+2. **Avoiding Prop Drilling**: Prop drilling ka problem hota hai jab aapko kisi deep nested component tak data pass karna hota hai, jismein intermediate components ko us data ko sirf pass karna hota hai. Context aur `useContext` hook ka istemal karke, aapko prop drilling se bachane ka ek tareeqa milta hai.
+
+3. **Theme Switching**: Agar aapko apne React application mein theme switching functionality implement karni hai, to context aur `useContext` hook ka istemal karke aap theme context ko components mein easily access kar sakte hain aur theme ko switch kar sakte hain.
+
+Is tarah se, `useContext` hook React developers ko component tree ke bhar se data ko access karne ka ek powerful aur flexible tareeqa provide karta hai.

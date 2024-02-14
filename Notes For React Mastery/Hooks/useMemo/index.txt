@@ -1,0 +1,30 @@
+`useMemo` hook React me ek performance optimization tool hai jo functional components ke saath istemal hota hai. Iska basic kaam hai kisi computation-intensive operation ko store karna takay wo baar baar execute na ho. 
+
+Jab aap koi value ya function generate karte hain jo calculations ya complex logic ko involve karta hai, to ye computation time consume karta hai. Agar aapka component re-render hota hai aur ye computation phir se chalu hoti hai har ek render pe, to performance pe asar hota hai.
+
+Yahan `useMemo` hook kaam me aata hai. Ye ek value ya function ko "memoize" karta hai, yaani ki usko cache kar deta hai. Agar input value(s) same hain, to uska previous result ko return karta hai, naye computation ke bajaye. Isse aap apne component ke re-renders me compute karne ka waqt bacha sakte hain.
+
+Jab aap kisi function ya value ko useMemo ke andar wrap karte hain, to wo value ya function tabhi execute hoti hai jab unke dependencies change hote hain. Agar dependencies same hain, to useMemo previous result ko return karta hai, jo compute kar chuke hote hain.
+
+Ye example `useMemo` ke basic kaam ko demonstrate karta hai:
+
+```javascript
+import React, { useMemo } from 'react';
+
+const MyComponent = ({ data }) => {
+  const expensiveOperation = useMemo(() => {
+    // Ye ek expensive computation hai jo result ko cache karega
+    return data.reduce((acc, val) => acc + val, 0);
+  }, [data]); // 'data' dependency pe based hai
+
+  return (
+    <div>
+      <p>Expensive Operation Result: {expensiveOperation}</p>
+    </div>
+  );
+};
+
+export default MyComponent;
+```
+
+Is example me, agar `data` array ki value change hoti hai, tabhi `expensiveOperation` compute hota hai. Agar `data` same rehti hai, to `expensiveOperation` ka previous result return hota hai. Isse compute time bacha sakte hain, jo ki re-render karte waqt important hota hai.

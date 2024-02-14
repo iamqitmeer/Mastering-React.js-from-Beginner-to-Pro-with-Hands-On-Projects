@@ -1,0 +1,56 @@
+`useEffect` hook React mein ek bahut hi mahatvapurna aur upyogi hook hai. Yeh hook component lifecycle ke hisaab se jata hai aur humein component ke lifecycle events ko handle karne ki anumati deta hai. 
+
+Kuch mukhya karan hain `useEffect` hook ka istemal karne ke:
+
+1. **Component Mounting, Updating, aur Unmounting:** `useEffect` component mount hone par, update hone par, ya fir unmount hone par chalata hai. Iske madhyam se, hum kisi action ko component ke lifecycle ke hisaab se execute kar sakte hain.
+
+2. **Data fetching aur subscription setup:** `useEffect` hook ka upyog server se data fetch karne ya fir kisi external resource se subscribe karne ke liye kiya ja sakta hai. Is tarah ke operations asynchronous hote hain aur `useEffect` hook ki madad se aap unhe component lifecycle ke hisaab se handle kar sakte hain.
+
+3. **Side Effects:** Component ke bahar ke duniya se kuch interaction karne wale operations jaise ki DOM manipulation, logging, aur timers ko `useEffect` hook ke madhyam se handle kiya ja sakta hai.
+
+Yeh ek chota udaharan hai ki kis tarah se `useEffect` hook ka istemal kiya ja sakta hai:
+
+```javascript
+import React, { useState, useEffect } from 'react';
+
+function MyComponent() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    // Component mount hone par data fetch karein
+    fetchData();
+
+    // Cleanup function, agar component unmount hota hai toh isko chalayein
+    return () => {
+      cleanupData();
+    };
+  }, []); // Empty dependency array kyonki hum sirf component mount ke samay ek hi baar data fetch karna chahte hain
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('https://example.com/data');
+      const jsonData = await response.json();
+      setData(jsonData);
+    } catch (error) {
+      console.error('Error fetching data: ', error);
+    }
+  };
+
+  const cleanupData = () => {
+    // Ismein hum kuch cleanup operations kar sakte hain, jaise ki subscription ko unsubscribe karna
+  };
+
+  return (
+    <div>
+      {/* Data ko render karein */}
+      {data.map(item => (
+        <div key={item.id}>{item.name}</div>
+      ))}
+    </div>
+  );
+}
+
+export default MyComponent;
+```
+
+Is udaharan mein, `useEffect` hook ka istemal kiya gaya hai data fetch karne aur cleanup operations karne ke liye jab component mount hota hai. Aur jab component unmount hota hai, cleanup function ko chalaya gaya hai.

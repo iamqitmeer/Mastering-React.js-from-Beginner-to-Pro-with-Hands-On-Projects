@@ -1,0 +1,44 @@
+`useReducer` hook React me ek state management ka tool hai jo complex state logic ko handle karne me madad karta hai. Ye hook, Redux jaise library ke sath comparison me bhi use kiya ja sakta hai, lekin chhote scale ke state management ke liye bhi kaafi useful hai.
+
+Ye hook, `useState` ke sath compare kar ke complex state management scenarios ke liye zyada flexibility aur control provide karta hai. `useState` se, jab aap multiple state variables ka use karte hain aur unme koi logic apply karni hoti hai, to code complex ho jata hai aur maintain karna mushkil ho jata hai. `useReducer` is tarah ke scenarios ke liye ek better solution ho sakta hai.
+
+`useReducer` hook ek function hai jo ek current state ko lekar ek action ko evaluate karta hai, aur fir us action ke according ek naya state return karta hai. Ye action basically ek object hota hai jo typically kuchh properties jaise type aur optional payload ke sath hota hai. Iske through, aap ek complex state ko efficiently manage kar sakte hain, kyunki aapko state ko update karne ke liye ek single function hai jo pure functions (reducers) ke sath kaam karta hai.
+
+Iska basic syntax aisa hota hai:
+
+```javascript
+const [state, dispatch] = useReducer(reducer, initialState);
+```
+
+`reducer` ek function hota hai jo current state aur action ko lekar naya state ko generate karta hai.
+
+Yahan ek chhota sa example hai:
+
+```javascript
+const initialState = { count: 0 };
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    default:
+      throw new Error();
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <div>
+      Count: {state.count}
+      <button onClick={() => dispatch({ type: 'increment' })}>Increment</button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>Decrement</button>
+    </div>
+  );
+}
+```
+
+Yahan `useReducer` ka use kiya gaya hai ek simple counter component ke liye, jisme hum state aur actions ka use kar ke count ko increment aur decrement kar rahe hain.

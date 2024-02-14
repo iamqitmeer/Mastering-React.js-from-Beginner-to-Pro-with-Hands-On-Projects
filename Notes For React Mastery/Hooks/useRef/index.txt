@@ -1,0 +1,32 @@
+`useRef` ek React Hook hai jo React functional components mein stateful values ko persist karne aur state ko manipulate karne ke liye use hota hai. 
+
+Kuch important points `useRef` ke baare mein:
+
+1. **Stateless**: Unlike `useState`, `useRef` stateless hota hai. Yani ke, jab component re-render hota hai, `useRef` ka value change nahi hota hai.
+
+2. **Mutable values store karna**: `useRef` ko mutable values store karne ke liye use kiya jata hai. For example, DOM elements, previous values, timers, etc.
+
+3. **DOM access**: Agar aap DOM element ko reference karna chahte hain aur use unpar operations perform karne ke liye (jaise ki focus set karna), to `useRef` ka use karte hain.
+
+4. **Component re-renders ko avoid karna**: `useRef` ka value re-renders mein update nahi hota hai, isliye isse component re-render nahi hota jab iska value change hota hai. Isse aap performance ko improve kar sakte hain.
+
+5. **Current property**: `useRef` ka object ka ek property hota hai jo `current` ke naam se accessible hota hai. Ye property actual value ko hold karta hai.
+
+Example:
+```javascript
+import React, { useRef } from 'react';
+
+function MyComponent() {
+  // useRef hook ka use karte hain ek DOM element ko reference karne ke liye
+  const myRef = useRef(null);
+
+  // useEffect ke andar, hum focus set kar rahe hain useRef se
+  useEffect(() => {
+    myRef.current.focus();
+  }, []);
+
+  return <input ref={myRef} />;
+}
+```
+
+Is example mein, `useRef` hook ka use ek input element ko reference karne ke liye kiya gaya hai. Uske baad, `useEffect` hook mein, jab component mount hota hai, input element pe focus set kiya jata hai `myRef.current.focus()` ke through.

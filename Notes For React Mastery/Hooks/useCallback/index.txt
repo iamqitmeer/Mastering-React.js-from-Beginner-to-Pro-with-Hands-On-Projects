@@ -1,0 +1,35 @@
+`useCallback` ek React hook hai jo functional components mein memoized callback functions ko create karta hai. Jab aap ek component mein function create karte hain, to har render cycle mein naya function create hota hai. Ye naye function create hone par performance ko negatively affect kar sakta hai, khas kar agar ye function props ke roop mein ek child component mein pass kiya ja raha hai jo `memo` ya `PureComponent` se wrap nahi hai.
+
+`useCallback` ka upyog yahi hota hai ki wo function ko memoize karta hai, matlab har render cycle mein naya function create nahi hoga, sirf jab dependencies mein kuch change hota hai tabhi. Isse performance improve hoti hai kyunki same function ko baar baar create nahi karna padega.
+
+Kuch code example dekh lete hain:
+
+```javascript
+import React, { useState, useCallback } from 'react';
+
+const MyComponent = () => {
+  const [count, setCount] = useState(0);
+
+  // Without useCallback
+  const handleClick = () => {
+    console.log('Button clicked');
+  };
+
+  // With useCallback
+  const handleClickMemoized = useCallback(() => {
+    console.log('Button clicked');
+  }, []); // Empty dependency array indicates that this function doesn't depend on any external values
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={handleClick}>Click me (Without useCallback)</button>
+      <button onClick={handleClickMemoized}>Click me (With useCallback)</button>
+    </div>
+  );
+};
+
+export default MyComponent;
+```
+
+Yahan, `handleClick` function har render cycle mein create hota hai, jabki `handleClickMemoized` function `useCallback` ke saath memoize hota hai, isliye sirf pehli render cycle mein hi create hota hai. Isse performance me improvement hoti hai, khas kar jab component re-renders hota hai aur `handleClick` jaise functions ko props ke roop mein pass kiya ja raha hai.

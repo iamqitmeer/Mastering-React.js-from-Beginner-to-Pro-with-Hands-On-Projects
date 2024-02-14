@@ -1,0 +1,13 @@
+`useLayoutEffect` ek React hook hai jo functional components mein use kiya jata hai. Ye `useEffect` hook ki tarah hota hai lekin ismein ek chhota sa fark hota hai.
+
+Jab aap kisi component mein kisi layout effect ko define karte hain, React us effect ko execute karta hai, lekin wo DOM update hone se pahle hota hai. Isse pehle ye hota hai ki browser DOM update karne ke baad user ke samne kuch change ho. Ismein agar aap koi DOM manipulation ya measurement ka kaam karte hain jo user ke liye visually noticeable ho, to ye use kar sakte hain.
+
+Kuch scenarios hain jahan `useLayoutEffect` `useEffect` se behtar hota hai:
+
+1. **DOM Measurements or Manipulations**: Agar aapko kisi element ka size ya position jaanna hai, aur aapko ismein kaafi exact ya latest data chahiye jo browser ke render cycle ke pehle available ho, to `useLayoutEffect` ka use karein.
+
+2. **Smooth UI Transitions**: Agar aap UI ka transition smooth karna chahte hain, to `useLayoutEffect` aapki madad karta hai kyunki ye browser ke paint cycle se pehle execute hota hai. Isse aapko better control milta hai transitions par.
+
+3. **Dependencies on Previous Render**: Agar aapka effect pichle render cycle se depend karta hai aur aapko pichle render ke changes ka access chahiye, to `useLayoutEffect` behtar hai kyunki ye component render hone se pehle execute hota hai.
+
+Jab aap `useLayoutEffect` ka use karte hain, yaad rahe ki ismein heavy operations mat karein kyunki ye synchronous hota hai aur aapki app performance par asar daal sakta hai. Agar aapko operation ko defer karne ki zarurat hai, to aap `useEffect` ka istemaal karein.
