@@ -1,0 +1,38 @@
+Context kya hota hai?
+
+React.js mein "context" ek advanced feature hai jo React applications mein data ko component tree ke across pass karne mein madad karta hai, bina props ko har ek level se explicitly pass karna padta. Context, prop drilling ko kam karne mein madad karta hai, jisse ki code maintainability improve hoti hai.
+
+Ek context create kiya ja sakta hai by using `React.createContext()` function. Context provider (jo ek parent component hota hai) ek value provide karta hai jo us context ke subscribers (child components) ke liye accessible hoti hai.
+
+Jab koi component ek context ke subscriber hota hai, wo `useContext()` hook ka upyog karke us context ki value ko access kar sakta hai.
+
+Yeh feature bahut hi powerful hai, khaaskar jab aapko multiple nested components mein data pass karna hota hai aur aap prop drilling ko avoid karna chahte hain. Lekin, zaroori hai ki aap context ka sahi tareeke se istemal karein, kyun ki overuse ya misuse se application ke performance mein kami aa sakti hai.
+
+Stepss:
+
+1. First Create React App
+2. Create 'Context' Folder in src.
+3. Create [projectName]context file using .js extension.
+4. import React from 'react'
+5. create varieble & add React.createContext()
+6. export varieble
+7. Next Create Provider File With .jsx OR .js. 
+8. File Ushi ke Saath Bana SKte He
+9. Jo export kiya tha use import krenge provider ke andar.
+10. eik funtion bana ke use export krdenge
+
+Ab Kya Hota Jaise Hamne Context Banaya wo Hame Major Cheez Deta He Provider. User Context bhi apne aaap me eik provider he. ham is ko eik raper lagayenge.
+Example
+<>
+<Login />
+<Register />
+<Home />
+<About />
+</>
+Context Ko Eik Global Varieble ki Tarah Smjh skti he.
+Jab Hamara Context Ban Jata he. to Hame Us Context ke Sath Eik Provider Bhi Banana Parta he Jo Data Provide kre ga
+Use Krne ke liye Saare Component ko is tag UserContext se rap krdenge
+
+
+
+21:30
